@@ -21,6 +21,7 @@ public class AppRun {
 		final ApplicationContext context = new FileSystemXmlApplicationContext("conf/applicationContext.xml");
 		AppCache.context = context;
 		
+		new Login();
 		LOGGER.info("ClientApp start success");
 	}
 }

@@ -9,11 +9,18 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
+
+import org.hibernate.classic.Validatable;
 
 import com.fgk.im.bean.Data;
 import com.fgk.im.socket.MessageSend;
 import com.fgk.im.socket.SocketHandler;
+import com.fgk.im.util.Validate;
+
+import junit.framework.Assert;
+import junit.framework.Test;
 
 public class Login{
 	
@@ -24,7 +31,7 @@ public class Login{
 	private JLabel labelPwd;//密码标签
 	private JButton buttonCancel;//取消按钮
 	private JTextArea textAreaUsername;//用户名输入框
-	private JTextArea textAreaPwd;//密码输入框
+	private JPasswordField passwordFieldPwd;//密码输入框
 	
 	public Login(){
 		
@@ -41,12 +48,24 @@ public class Login{
 		panel = new JPanel();
 		panel.setVisible(true);
 		
-		buttonConfirm =  new JButton("Login");
+		buttonConfirm =  new JButton("确定");
+		buttonCancel = new JButton("取消");
 		
-		labelUserName = new JLabel("default");
+		labelUserName = new JLabel("用户名");
+		labelPwd = new JLabel("密码");
+		
+		textAreaUsername = new JTextArea();
+		textAreaUsername.setColumns(10);
+		passwordFieldPwd = new JPasswordField();
+		passwordFieldPwd.setColumns(20);
 		
 		panel.add(buttonConfirm);
+		panel.add(buttonCancel);
 		panel.add(labelUserName);
+		panel.add(labelPwd);
+		panel.add(textAreaUsername);
+		panel.add(passwordFieldPwd);
+		
 		
 		frame.add(panel);
 	}
@@ -70,9 +89,12 @@ public class Login{
 	 */
 	private void _buttonConfirmActionPerformed(ActionEvent event){
 		
+		String strUsername =  this.textAreaUsername.getText();//用户输入的用户名
+		String strPassword = this.passwordFieldPwd.getText();//用户输入的密码
+
 		List<Object> params = new ArrayList<Object>();
-		params.add("admin");
-		params.add("123456");
+		params.add(strUsername);
+		params.add(strPassword);
 		
 		if (SocketHandler.session !=null) {
 			

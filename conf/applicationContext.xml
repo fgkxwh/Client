@@ -18,6 +18,4 @@
 
 	<!--使用annotation自动注册bean,可以用逗号分隔的列表来分别指定包含各个类的包 -->
 	<context:component-scan base-package="com.fgk.im" />
-
-	<bean class = "com.fgk.im.gui.Login" init-method = "start" ></bean>
 </beans>
