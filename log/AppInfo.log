@@ -1,12 +1,2 @@
-2016-02-05 11:16:32,432 INFO [com.fgk.im.AppRun.main(AppRun.java:24)] - ClientApp start success
-2016-02-05 14:23:15,304 INFO [com.fgk.im.AppRun.main(AppRun.java:24)] - ClientApp start success
-2016-02-05 14:24:05,193 INFO [com.fgk.im.AppRun.main(AppRun.java:24)] - ClientApp start success
-2016-02-05 17:15:01,987 INFO [com.fgk.im.AppRun.main(AppRun.java:24)] - ClientApp start success
-2016-02-05 17:20:15,428 INFO [com.fgk.im.AppRun.main(AppRun.java:24)] - ClientApp start success
-2016-02-05 17:21:12,242 INFO [com.fgk.im.AppRun.main(AppRun.java:24)] - ClientApp start success
-2016-02-05 17:22:06,160 INFO [com.fgk.im.AppRun.main(AppRun.java:25)] - ClientApp start success
-2016-02-05 17:22:50,429 INFO [com.fgk.im.AppRun.main(AppRun.java:25)] - ClientApp start success
-2016-02-05 17:23:01,369 INFO [com.fgk.im.AppRun.main(AppRun.java:25)] - ClientApp start success
-2016-02-05 17:26:00,603 INFO [com.fgk.im.AppRun.main(AppRun.java:25)] - ClientApp start success
-2016-02-05 17:38:58,775 INFO [com.fgk.im.AppRun.main(AppRun.java:25)] - ClientApp start success
-2016-02-05 17:41:07,320 INFO [com.fgk.im.AppRun.main(AppRun.java:25)] - ClientApp start success
+2016-02-16 11:10:16,230 INFO [com.fgk.im.AppRun.main(AppRun.java:25)] - ClientApp start success
+2016-02-16 19:46:52,707 INFO [com.fgk.im.AppRun.main(AppRun.java:25)] - ClientApp start success

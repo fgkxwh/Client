@@ -13,8 +13,14 @@ import com.google.gson.Gson;
  */
 public class MessageSend {
 	
-	public static void send(Data data){
+	public static void send(String uri,Object...params){
+		
+		List<Object> temParams = new ArrayList<Object>();
+		for (int i = 0; i < params.length; i++) {
+			temParams.add(params[i]);
+		}
 
+		Data data = new Data("UserService/login",temParams);
 		if (SocketHandler.session != null) {
 			
 			SocketHandler.session.write(data);
@@ -22,6 +28,7 @@ public class MessageSend {
 			
 			System.out.println(" MessageSend.send:"+"发送时session为空，数据发送失败");
 		}
+		
 	}
 
 }
