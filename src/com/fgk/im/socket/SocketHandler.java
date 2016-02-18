@@ -2,6 +2,7 @@ package com.fgk.im.socket;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.mina.core.service.IoHandler;
@@ -23,7 +24,7 @@ public class SocketHandler implements IoHandler {
 	@Override
 	public void messageReceived(IoSession session, Object message) throws Exception {
 		
-		System.out.println("messageReceived:"+ session + "  :"+message);
+		System.out.println("Client messageReceived:"+ session + "  :"+message);
 		
 		if (message instanceof Data) {
 			
@@ -33,7 +34,7 @@ public class SocketHandler implements IoHandler {
 		     String[] arrUri = uri.split("/");//以/分割开 类名和 方法名
 		     String strClass = arrUri[0];//类名
 		     String strMethod = arrUri[1];//方法名
-		     List<Object> params = data.getParams();//参数列表
+		     HashMap<String, Object> params = data.getParams();//参数
 		     System.out.println("params :"+params);
 //		     params.add(session);//在参数列表后 加上session
 
@@ -69,24 +70,24 @@ public class SocketHandler implements IoHandler {
 	
 	@Override
 	public void messageSent(IoSession session, Object object) throws Exception {
-		System.out.println(" messageSent  "+session + " , "+object);
+		System.out.println("Client messageSent  "+session + " , "+object);
 		
 	}
 
 	@Override
 	public void sessionClosed(IoSession session) throws Exception {
 		
-		System.out.println("sessionClosed"+ "  , "+session);
+		System.out.println("Client sessionClosed"+ "  , "+session);
 	}
 
 	@Override
 	public void sessionCreated(IoSession session) throws Exception {
-		System.out.println("sessionCreated"+ "  , "+session);
+		System.out.println("Client sessionCreated"+ "  , "+session);
 	}
 
 	@Override
 	public void sessionIdle(IoSession arg0, IdleStatus idleStatus) throws Exception {
-		System.out.println("sessionIdle"+ "  , "+ idleStatus.toString());
+		System.out.println("Client sessionIdle"+ "  , "+ idleStatus.toString());
 	}
 
 	@Override

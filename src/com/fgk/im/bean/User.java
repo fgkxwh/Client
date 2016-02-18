@@ -1,8 +1,5 @@
 package com.fgk.im.bean;
 
-import javax.persistence.Entity;
-
-@Entity
 public class User extends BaseEntity{
 	
 	private String username;

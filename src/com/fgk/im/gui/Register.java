@@ -3,6 +3,7 @@ package com.fgk.im.gui;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -21,6 +22,7 @@ import com.fgk.im.util.MyValidate;
 */
 public class Register {
 
+	private HashMap<String, Object> params;
 	private JFrame frame;
 	private JPanel panel;
 	private JLabel labelUsername;
@@ -112,6 +114,10 @@ public class Register {
 		String strPassword = this.password.getText();
 		String strPasswordRep = this.passwordRep.getText();
 		
+		params = _getHMInstance();
+		params.put("strUsername", strUsername);
+		params.put("strPassword", strPassword);
+		
 		if (MyValidate.isNullOrEmpty(strUsername,strPassword,strPasswordRep)) {//如果输入的用户名，密码，和重复输入的密码有为空的
 			
 			System.out.println("输入不能为空");
@@ -121,7 +127,7 @@ public class Register {
 			
 			if (strPassword.equals(strPasswordRep)) {//如果两次输入的密码相同
 				
-				MessageSend.send("UserService/register",strUsername,strPassword);
+				MessageSend.send("userService/register",params);
 			}else {
 				
 				System.out.println("两次输入的密码不相同");
@@ -139,6 +145,17 @@ public class Register {
 		
 		System.exit(0);//退出此界面
 		
+	}
+	
+	private HashMap<String, Object> _getHMInstance(){
+		
+		HashMap<String, Object> params = new HashMap<String,Object>();
+		if (params.isEmpty()) {
+			return params;
+		}else{
+			params.clear();//清空hashmap
+			return params;
+		}
 	}
 	
 	public static void main(String[] args) {

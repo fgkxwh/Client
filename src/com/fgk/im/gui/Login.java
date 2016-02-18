@@ -4,6 +4,7 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.swing.Action;
@@ -33,6 +34,7 @@ import junit.framework.Test;
  */
 public class Login{
 	
+	private HashMap<String, Object> params;
 	private JFrame frame;
 	private JPanel panel;
 	private JButton buttonConfirm;//确定按钮
@@ -128,7 +130,11 @@ public class Login{
 		
 		String strUsername =  this.textAreaUsername.getText();//用户输入的用户名
 		String strPassword = this.passwordFieldPwd.getText();//用户输入的密码
-
+		
+		params = _getHMInstance();
+		params.put("strUsername", strUsername);
+		params.put("strPassword",strPassword);
+		
 		if (MyValidate.isNullOrEmpty(strUsername,strPassword)) {//输入的用户名或者密码为空
 			
 			System.out.println("输入的用户名或者密码为空");
@@ -136,7 +142,7 @@ public class Login{
 			
 		}else{//输入的用户名或者密码都不为空
 			
-			MessageSend.send("UserService/login",strUsername,strPassword);
+			MessageSend.send("userService/login",params);
 		}
 		
 	}
@@ -160,6 +166,18 @@ public class Login{
 	}
 	
 	
+	private HashMap<String, Object> _getHMInstance(){
+		
+		HashMap<String, Object> params = new HashMap<String,Object>();
+		if (params.isEmpty()) {
+			params.put("session", SocketHandler.session);
+			return params;
+		}else{
+			params.clear();//清空hashmap
+			params.put("session", SocketHandler.session);
+			return params;
+		}
+	}
 	
 	//界面测试主函数
 	public static void main(String[] args){
