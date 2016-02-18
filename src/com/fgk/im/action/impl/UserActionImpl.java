@@ -19,8 +19,7 @@ public class UserActionImpl  implements IUserAction{
 	public void login(HashMap<String, Object> params){
 		
 		System.out.println("login success");
-		return;
-//		new IMList();//进入好友列表界面
+		new IMList();//进入好友列表界面
 	}
 	
 	@Override

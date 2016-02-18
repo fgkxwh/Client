@@ -32,7 +32,7 @@ import junit.framework.Test;
  * @author Administrator
  *
  */
-public class Login{
+public class Login implements IGui{
 	
 	private HashMap<String, Object> params;
 	private JFrame frame;
@@ -47,13 +47,15 @@ public class Login{
 	
 	public Login(){
 		
-		_initComponents();//界面初始化
-		_setEvent();//组件设置监听事件
+		initComponents();//界面初始化
+		setEvent();//组件设置监听事件
 	}
 	
-	//组件初始化，布局设置
-	private void _initComponents(){
-		
+	
+	
+	@Override
+	public void initComponents() {
+
 		frame = new JFrame("登录");
 		frame.setSize(500, 500);
 		frame.setVisible(true);
@@ -85,40 +87,48 @@ public class Login{
 		panel.setLayout(new FlowLayout());
 		
 		frame.add(panel);
+		
 	}
-	
-	//添加组件事件
-	private void _setEvent(){
+
+	@Override
+	public void setEvent() {
 		
 		//确定按钮单击事件
-		buttonConfirm.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
+				buttonConfirm.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						
+						_buttonConfirmActionPerformed(e);
+					}
+				});
 				
-				_buttonConfirmActionPerformed(e);
-			}
-		});
-		
-		//取消按钮单击事件
-		buttonCancel.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
+				//取消按钮单击事件
+				buttonCancel.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						
+						_buttonCancelActionPerformed(e);
+					}
+				});
 				
-				_buttonCancelActionPerformed(e);
-			}
-		});
-		
-		//注册按钮单击事件
-		buttonRegister.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
+				//注册按钮单击事件
+				buttonRegister.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
 
-				_buttonRegisterActionPerformed(e);
-			}
-		});
+						_buttonRegisterActionPerformed(e);
+					}
+				});
+		
+	}
+	
+	@Override
+	public void show() {
+		initComponents();
+		setEvent();
 		
 	}
 	
@@ -184,5 +194,6 @@ public class Login{
 		
 		new Login();
 	}
+
 	
 }

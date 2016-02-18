@@ -20,7 +20,7 @@ import com.fgk.im.util.MyValidate;
 * @version 创建时间：2016年2月16日 下午3:29:55 
 * 注册界面
 */
-public class Register {
+public class Register implements IGui {
 
 	private HashMap<String, Object> params;
 	private JFrame frame;
@@ -36,12 +36,12 @@ public class Register {
 	
 	public Register(){
 		
-		_initComponents();
-		_setEvent();
+		initComponents();
+		setEvent();
 	}
 	
-	private void _initComponents(){
-		
+	@Override
+	public void initComponents() {
 		frame = new JFrame("注册");
 		frame.setSize(500, 500);
 		frame.setVisible(true);
@@ -79,29 +79,29 @@ public class Register {
 		frame.add(panel);
 		
 	}
-	
-	private void _setEvent(){
-		
+
+	@Override
+	public void setEvent() {
 		//确定按钮单击事件
-		buttonConfirm.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
+				buttonConfirm.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						
+						_buttonConfirmActionPerformed(e);
+					}
+				});
 				
-				_buttonConfirmActionPerformed(e);
-			}
-		});
-		
-		//取消按钮单击事件
-		buttonCancel.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
+				//取消按钮单击事件
+				buttonCancel.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						
+						_buttonCancelActionPerformed(e);
+					}
+				});
 				
-				_buttonCancelActionPerformed(e);
-			}
-		});
-		
 	}
 	
 	/**
@@ -147,6 +147,20 @@ public class Register {
 		
 	}
 	
+	
+	@Override
+	public void show() {
+		
+		initComponents();
+		setEvent();
+		
+	}
+
+	public static void main(String[] args) {
+
+		new Register();
+	}
+	
 	private HashMap<String, Object> _getHMInstance(){
 		
 		HashMap<String, Object> params = new HashMap<String,Object>();
@@ -158,9 +172,4 @@ public class Register {
 		}
 	}
 	
-	public static void main(String[] args) {
-
-		new Register();
-	}
-
 }
