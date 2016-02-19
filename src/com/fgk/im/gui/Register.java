@@ -1,5 +1,6 @@
 package com.fgk.im.gui;
 
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
+import javax.swing.border.LineBorder;
 
 import com.fgk.im.socket.MessageSend;
 import com.fgk.im.util.MyValidate;
@@ -54,12 +56,15 @@ public class Register implements IGui {
 		
 		textAreaUsername = new JTextArea();
 		textAreaUsername.setColumns(10);
+		textAreaUsername.setBorder(new LineBorder(Color.black));
 		
 		password = new JPasswordField();
 		password.setColumns(10);
+		password.setBorder(new LineBorder(Color.black));
 		
 		passwordRep = new JPasswordField(10);
 		passwordRep.setColumns(10);
+		passwordRep.setBorder(new LineBorder(Color.black));
 		
 		buttonConfirm = new JButton("确定");
 		buttonCancel = new JButton("取消");

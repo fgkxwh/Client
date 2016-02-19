@@ -5,6 +5,8 @@ import java.util.HashMap;
 import org.springframework.stereotype.Service;
 
 import com.fgk.im.action.ITalkAction;
+import com.fgk.im.util.AppCache;
+import com.fgk.im.util.TimeUtil;
 
 /** 
 * @author fanguangkai E-mail: fgkxwh@126.com
@@ -18,9 +20,9 @@ public class TalkActionImpl implements ITalkAction {
 	public void privateTalk(HashMap<String, Object> params) {
 		
 		String message = params.get("message").toString();
+		String username = params.get("username").toString();
 		
-		//界面显示
-		
+		AppCache.privateTalk.addTalkInfo(TimeUtil.getDate() +" <" +username +">\n"+ message+"\n");
 	}
 
 }

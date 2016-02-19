@@ -14,6 +14,7 @@ import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 
 import com.fgk.im.socket.MessageSend;
+import com.fgk.im.util.TimeUtil;
 
 /** 
 * @author fanguangkai E-mail: fgkxwh@126.com
@@ -84,7 +85,7 @@ public class PrivateTalk implements IGui {
 	private void _buttonSendActionPerformed(ActionEvent event){
 		
 		//添加信息到聊天记录框
-		this.textAreaTalkInfo.append(textAreaInput.getText() + "\n");
+		this.textAreaTalkInfo.append(TimeUtil.getDate() +" <"+ getUsername() +"> \n" +textAreaInput.getText() + "\n");
 		
 		HashMap<String, Object> params = _getHMInstance();
 		params.put("message", textAreaInput.getText());
@@ -118,6 +119,11 @@ public class PrivateTalk implements IGui {
 			params.clear();//清空hashmap
 			return params;
 		}
+	}
+	
+	public void addTalkInfo(String talkInfo){
+		
+		this.textAreaTalkInfo.append(talkInfo + "\n");
 	}
 	
 	public static void main(String[] args) {

@@ -15,6 +15,8 @@ import javax.swing.border.LineBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import com.fgk.im.util.AppCache;
+
 /** 
 * @author fanguangkai E-mail: fgkxwh@126.com
 * @version 创建时间：2016年2月16日 下午8:25:49 
@@ -90,6 +92,7 @@ public class FriendList implements IGui {
 	        		PrivateTalk privateTalk = new PrivateTalk();
 	        		privateTalk.setUsername(username);
 	        		privateTalk.show();
+	        		AppCache.privateTalk = privateTalk;
 				}
 	        }
 	}

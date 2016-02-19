@@ -1,6 +1,9 @@
 package com.fgk.im.gui;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -15,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 
 import org.hibernate.classic.Validatable;
 
@@ -72,8 +76,10 @@ public class Login implements IGui{
 		
 		textAreaUsername = new JTextArea();
 		textAreaUsername.setColumns(10);
+		textAreaUsername.setBorder(new LineBorder(Color.black));
 		passwordFieldPwd = new JPasswordField();
 		passwordFieldPwd.setColumns(10);
+		passwordFieldPwd.setBorder(new LineBorder(Color.black));
 		
 		panel.add(labelUserName);
 		panel.add(textAreaUsername);
@@ -85,6 +91,7 @@ public class Login implements IGui{
 		
 		//布局,简单的流式布局
 		panel.setLayout(new FlowLayout());
+		
 		
 		frame.add(panel);
 		
