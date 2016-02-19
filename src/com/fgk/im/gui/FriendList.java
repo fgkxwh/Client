@@ -20,35 +20,35 @@ import javax.swing.event.ListSelectionListener;
 * @version 创建时间：2016年2月16日 下午8:25:49 
 * 好友列表界面 
 */
-public class IMList implements IGui {
+public class FriendList implements IGui {
 
+	private String username;
+	private Vector<Object> friends = new Vector<Object>();
 	private JFrame frame;
 	private JPanel panel;
 	private JLabel labelUserInfo;
 	private JList<Object> listFriend;
 	
-	public IMList() {
-		initComponents();
-		setEvent();
+	public FriendList() {
+//		initComponents();
+//		setEvent();
 	}
 	
 	
 	@Override
 	public void initComponents() {
 		
-		frame = new JFrame("im");
+		frame = new JFrame("好友列表");
 		frame.setSize(200, 800);
 		frame.setVisible(true);
 		
 		//临时数据
-		labelUserInfo = new JLabel("xxxxzzzzzzzzssssssszzzz");
+		labelUserInfo = new JLabel("欢迎你xxxxxxxxxxxx"+"<"+getUsername()+">");
 		
 		//临时数据
-		Vector<Object> friend = new Vector<Object>();
-		friend.add("");//第一个元素单击无法显示
-		friend.add("zzzz");
-		friend.add("qqqq");
-		listFriend = new JList<>(friend);
+//		Vector<Object> friend = new Vector<Object>();
+		
+		listFriend = new JList<Object>(getFriends());
 		listFriend.setBorder(new LineBorder(Color.black));
 		
 		panel = new JPanel();
@@ -87,7 +87,9 @@ public class IMList implements IGui {
 	        		String username = listFriend.getModel().getElementAt(index).toString();
 	        		System.out.println(username);
 	        		//调用聊天界面
-	        		new PrivateTalk().show();
+	        		PrivateTalk privateTalk = new PrivateTalk();
+	        		privateTalk.setUsername(username);
+	        		privateTalk.show();
 				}
 	        }
 	}
@@ -102,8 +104,35 @@ public class IMList implements IGui {
 	
 	public static void main(String[] args) {
 		
-		new IMList();
+		new FriendList().show();
 
+	}
+
+
+	public String getUsername() {
+		return username;
+	}
+
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+
+	public Vector<Object> getFriends() {
+		return friends;
+	}
+
+
+	public void setFriends(Vector<Object> friends){
+		
+		this.friends = friends;
+	}
+	
+	public void addFriend(Object friend) {
+		
+		friends.add("");//第一个元素单击无法显示
+		this.friends.add(friend);
 	}
 
 }

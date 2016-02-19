@@ -190,7 +190,7 @@ public class Login implements IGui{
 	//界面测试主函数
 	public static void main(String[] args){
 		
-		new Login();
+		new Login().show();
 	}
 
 	

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.fgk.im.action.IUserAction;
 import com.fgk.im.bean.Data;
-import com.fgk.im.gui.IMList;
+import com.fgk.im.gui.FriendList;
 import com.fgk.im.gui.Login;
 import com.fgk.im.socket.MessageSend;
 
@@ -19,7 +19,20 @@ public class UserActionImpl  implements IUserAction{
 	public void login(HashMap<String, Object> params){
 		
 		System.out.println("login success");
-		new IMList();//进入好友列表界面
+		boolean success = (boolean) params.get("success");
+		String username = params.get("username").toString();
+		//登录成功
+		if (success) {
+			
+			//进入好友列表界面
+			FriendList friendList = new FriendList();
+			friendList.setUsername(username);
+			friendList.addFriend(username);
+			friendList.show();
+			
+		}else {//登录失败
+			System.out.println("账号或者密码不对，登录失败");
+		}
 	}
 	
 	@Override

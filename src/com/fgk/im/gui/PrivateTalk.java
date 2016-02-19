@@ -21,7 +21,8 @@ import com.fgk.im.socket.MessageSend;
 * 一对一聊天界面 
 */
 public class PrivateTalk implements IGui {
-
+	
+	private String username;
 	private JFrame fram;
 	private JPanel panel;
 	private JTextArea textAreaTalkInfo;//聊天消息记录框
@@ -29,14 +30,14 @@ public class PrivateTalk implements IGui {
 	private JButton buttonSend;//发送按钮
 	
 	public PrivateTalk() {
-		initComponents();
-		setEvent();
+//		initComponents();
+//		setEvent();
 	}
 
 	@Override
 	public void initComponents() {
 		
-		fram = new JFrame("你和...正在聊天");
+		fram = new JFrame("你和"+"<"+username+">"+"正在聊天");
 		fram.setSize(600, 600);
 		fram.setVisible(true);
 		
@@ -87,6 +88,7 @@ public class PrivateTalk implements IGui {
 		
 		HashMap<String, Object> params = _getHMInstance();
 		params.put("message", textAreaInput.getText());
+		params.put("username",getUsername());
 		
 		MessageSend.send("talkService/privateTalk", params);
 	}
@@ -98,6 +100,15 @@ public class PrivateTalk implements IGui {
 		setEvent();
 	}
 
+	public void setUsername(String username){
+		
+		this.username = username;
+	}
+	public String getUsername(){
+		
+		return this.username;
+	}
+	
 	private HashMap<String, Object> _getHMInstance(){
 		
 		HashMap<String, Object> params = new HashMap<String,Object>();
@@ -111,7 +122,7 @@ public class PrivateTalk implements IGui {
 	
 	public static void main(String[] args) {
 		
-		new PrivateTalk();
+		new PrivateTalk().show();
 
 	}
 }
