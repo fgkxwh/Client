@@ -1,5 +1,7 @@
 package com.fgk.im.gui;
 
+import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -9,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -46,10 +49,14 @@ public class IMList implements IGui {
 		friend.add("zzzz");
 		friend.add("qqqq");
 		listFriend = new JList<>(friend);
+		listFriend.setBorder(new LineBorder(Color.black));
 		
 		panel = new JPanel();
 		panel.add(labelUserInfo);
 		panel.add(listFriend);
+		
+		//布局,简单的流式布局
+		panel.setLayout(new FlowLayout());
 		
 		frame.add(panel);
 	}
@@ -79,7 +86,8 @@ public class IMList implements IGui {
 	        	if (index > 0) {
 	        		String username = listFriend.getModel().getElementAt(index).toString();
 	        		System.out.println(username);
-	        		//调用聊天界面.....
+	        		//调用聊天界面
+	        		new PrivateTalk().show();
 				}
 	        }
 	}
@@ -87,7 +95,8 @@ public class IMList implements IGui {
 
 	@Override
 	public void show() {
-		// TODO Auto-generated method stub
+		initComponents();
+		setEvent();
 		
 	}
 	

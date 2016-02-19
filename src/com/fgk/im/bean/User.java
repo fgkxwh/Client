@@ -1,7 +1,8 @@
 package com.fgk.im.bean;
 
-public class User extends BaseEntity{
-	
+import java.io.Serializable;
+
+public class User extends BaseEntity {
 	private String username;
 	private String password;
 	

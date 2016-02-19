@@ -180,11 +180,9 @@ public class Login implements IGui{
 		
 		HashMap<String, Object> params = new HashMap<String,Object>();
 		if (params.isEmpty()) {
-			params.put("session", SocketHandler.session);
 			return params;
 		}else{
 			params.clear();//清空hashmap
-			params.put("session", SocketHandler.session);
 			return params;
 		}
 	}
